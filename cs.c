@@ -19,10 +19,24 @@ static int compare(const void *a, const void *b)
 	const row_t *rowB = (const row_t *)b;
 
 	int result;
-	/* TODO: result<0 if a<b, result>0 if a>b, result=0 if a==b */
 
+	result = strcmp(rowA->name, rowB->name);
+	if (result != 0) {
+		return result;
+	}
 
-	return result;
+	result = strcmp(rowA->tech_name, rowB->tech_name);
+	if (result != 0) {
+		return result;
+	}
+
+	if (rowA->id < rowB->id) {
+		return -1;
+	} else if(rowA->id > rowB->id) {
+		return 1;
+	} else {
+		return 0;
+	}
 }
 
 void init_row(row_t *row) {
@@ -60,7 +74,7 @@ int main(int argc, char **argv)
 
 	while (i < row_count) {
 		fscanf(fp, "%d %s %s %s\n", &rows[i].id, rows[i].name, rows[i].ip_addr, rows[i].tech_name);
-		printf("%d %s %s %s\n", rows[i].id, rows[i].name, rows[i].ip_addr, rows[i].tech_name);
+		//printf("%d %s %s %s\n", rows[i].id, rows[i].name, rows[i].ip_addr, rows[i].tech_name);
 		i++;
 		init_row(&rows[i]);
 	}
@@ -70,13 +84,14 @@ int main(int argc, char **argv)
 	/*
 	 *	5. SORTIERALGORITHMUS ANWENDEN
 	 */
-	// qsort(/* TODO: ?, ?, ? */, compare);
-	qsort(*rows, row_count, sizeof(row_t), compare);
+	qsort(&(rows[0]), row_count, sizeof(row_t), compare);
 
 	/*
 	 *	7. GEBEN SIE DAS SORTIERTE ARRAY IM KORREKTEN FORMAT AUS
 	 */
-	printf("legga array :3\n");
+	for (i = 0; i < row_count; ++i) {
+		printf("%d %s %s %s\n", rows[i].id, rows[i].name, rows[i].ip_addr, rows[i].tech_name);
+	}
 
 	/*
 	 *	8. GEBEN SIE DAS FORMALS ALLOZIIERTE ARRAY WIEDER FREI
