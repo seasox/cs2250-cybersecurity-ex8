@@ -71,6 +71,7 @@ int main(int argc, char **argv)
 	 *	5. SORTIERALGORITHMUS ANWENDEN
 	 */
 	// qsort(/* TODO: ?, ?, ? */, compare);
+	qsort(*rows, row_count, sizeof(row_t), compare);
 
 	/*
 	 *	7. GEBEN SIE DAS SORTIERTE ARRAY IM KORREKTEN FORMAT AUS
