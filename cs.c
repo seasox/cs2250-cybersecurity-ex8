@@ -45,6 +45,12 @@ void init_row(row_t *row) {
 	row->tech_name	= (char *) malloc(31);
 }
 
+void free_row(row_t *row) {
+	free(row->name);
+	free(row->ip_addr);
+	free(row->tech_name);
+}
+
 int main(int argc, char **argv)
 {
 	// Check arguments
@@ -96,6 +102,9 @@ int main(int argc, char **argv)
 	/*
 	 *	8. GEBEN SIE DAS FORMALS ALLOZIIERTE ARRAY WIEDER FREI
 	 */
+	for (int i = 0; i < row_count; i++) {
+		free_row(&(rows[i]));
+	}
 	free(rows);
 
 	return 0;
