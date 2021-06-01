@@ -100,7 +100,7 @@ int main(int argc, char **argv)
 	}
 
 	/*
-	 *	8. GEBEN SIE DAS FORMALS ALLOZIIERTE ARRAY WIEDER FREI
+	 *	8. GEBEN SIE DAS VORMALS ALLOZIIERTE ARRAY WIEDER FREI
 	 */
 	for (int i = 0; i < row_count; i++) {
 		free_row(&(rows[i]));
