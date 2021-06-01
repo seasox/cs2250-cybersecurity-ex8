@@ -70,7 +70,7 @@ int main(int argc, char **argv)
 	int row_count;
 	fscanf(fp, "%d", &row_count);
 	row_t *rows = (row_t *) calloc(row_count, 5 + 82*row_count);
-	printf("row_count: %d\n", row_count);
+	printf("%d\n", row_count);
 
 	/*
 	 *	4. LESEN SIE NUN DIE EINZELNEN ZEILEN MIT fscanf IN rows EIN
